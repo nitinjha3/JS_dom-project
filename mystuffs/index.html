@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style>
+       h1{
+        text-align: center;
+       }
+       form{
+        margin: auto;
+        width: 20%;
+       } 
+    </Style>
+</head>
+<body>
+    <h1>BMI CALCULATOR</h1>
+ 
+        <input type="number" id="h" placeholder="Enter your height">
+        <br>
+        <br>
+        <input type="number" id="w" placeholder="Enter your weight">
+        <br>
+        <br>
+        <button onclick="myfun()">Calculate</button>
+   
+
+    <h3>
+        
+    </h3>
+
+</body>
+</html>
+
+<script>
+    
+//    let result1=document.querySelector('')
+    // result1.addEventListener('submit',)
+
+
+    function myfun(){
+        // e.preventDefault()
+        let height=Number(document.querySelector('#h').value)
+    let weight=Number(document.querySelector('#w').value)
+        result=weight/(height*height)
+        document.querySelector('h3').innerText=result;
+        console.log(result)
+        console.log(height)
+        console.log(weight)
+
+    }
+
+
+</script>
