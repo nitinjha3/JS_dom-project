@@ -8,23 +8,24 @@
        h1{
         text-align: center;
        }
-       form{
-        margin: auto;
+       input,button{
+        align-self: center;
         width: 20%;
        } 
     </Style>
 </head>
 <body>
     <h1>BMI CALCULATOR</h1>
- 
+      <form action="">
         <input type="number" id="h" placeholder="Enter your height">
         <br>
         <br>
         <input type="number" id="w" placeholder="Enter your weight">
         <br>
         <br>
-        <button onclick="myfun()">Calculate</button>
-   
+        <!-- <button onclick="myfun()">Calculate</button> -->
+        <input type="submit" value="calculate">
+    </form>
 
     <h3>
         
@@ -39,17 +40,30 @@
     // result1.addEventListener('submit',)
 
 
-    function myfun(){
-        // e.preventDefault()
-        let height=Number(document.querySelector('#h').value)
-    let weight=Number(document.querySelector('#w').value)
-        result=weight/(height*height)
-        document.querySelector('h3').innerText=result;
-        console.log(result)
-        console.log(height)
-        console.log(weight)
+    // function myfun(){
+    //     // e.preventDefault()
+    //     let height=Number(document.querySelector('#h').value)
+    // let weight=Number(document.querySelector('#w').value)
+    //     result=weight/(height*height)
+    //     document.querySelector('h3').innerText=result;
+    //     console.log(result)
+    //     console.log(height)
+    //     console.log(weight)
+      
+    // }
 
-    }
+
+    let form=document.querySelector('form')
+
+    form.addEventListener('submit',function(e)
+    {
+      e.preventDefault();
+      let height=Number(document.querySelector('#h').value)
+      let weight=Number(document.querySelector('#w').value)
+      result=weight/(height*height)
+      document.querySelector('h3').innerText=result;
+    
+    })
 
 
 </script>
