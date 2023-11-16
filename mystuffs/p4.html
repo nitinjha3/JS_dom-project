@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
     <style>
@@ -11,13 +11,7 @@
             color: red;
         }
 
-       .main{
-          box-sizing: border-box;
-          justify-content: center;
-          text-align: center;
-          height: 80vh;
-          font-size: 25px;
-       }
+       
        #a{
           font-size: 30px;
           display: block;
@@ -45,7 +39,7 @@
         font-size: 20px;
         border-style: none;
          margin-top: 50px;
-         margin-left: 635px;
+         /* margin-left: 635px; */
          background-color: #600808;
      }
      .res{
@@ -58,6 +52,16 @@
      body{
         background-color:aqua;
      }
+     .main{
+          box-sizing: border-box;
+          justify-content: center;
+          align-items:center;
+          text-align: center;
+          height: 80vh;
+          font-size: 25px;
+          display: flex;
+          flex-direction: column;
+       }
     </style>
 </head>
 <body>
@@ -74,21 +78,85 @@
         </form>
 
         <div class="res">
-            <p>Previous Guesses: <span class="guess"></span></p>
-            <p>Guesses Remaining: <span class="rem">10</span></p>
+            <p>Previous Guesses: <span id="guess"></span></p>
+            <p>Guesses Remaining: <span id="rem">10</span></p>
 
             <p class="ans"></p>
         </div>
 
 
     </div>
+
+    <div class="output">
+
+    </div>
 </body>
 </html>
 
 <script>
-    let num=document.querySelector('#val')
+    let input=document.querySelector('#val')
     let ran=parseInt(Math.random()*100+1);
-    console.log(ran);
+    // console.log(ran);   
+
+    let submit=document.querySelector("#submit")
+    let prev=document.querySelector("#guess")
+    let rem=document.querySelector("#rem")
+    let ans=document.querySelector(".ans")
+
+    let prevGuesses=[]
+    let count=1;
+
+    let play=true
+
+    if(play)
+    {
+        submit.addEventListener('click',function(e){
+            e.preventDefault()
+            let guess=parseInt(input.value)
+            // console.log(guess)
+            validate(guess)
+
+        })
+    }
+
+
+    function validate(guess){
+        if(isNaN(guess))
+        {
+            alert('Please enter a valid Number')
+        }
+        else if(guess<1)
+        {
+            alert('Number is less than 1')
+        }
+        else if(guess>100)
+        {
+            alert('Number is greater than 100')
+        }
+        else{
+            // prevGuesses.push(guess)
+            // displayMessage('Game Over.')
+            check(guess)
+        }
+    }
+
+
+    function check(guess){
+        // let ran=parseInt(Math.random()*100+1);
+        document.querySelector('.output').innerText=""
+        let result=document.createElement('h1')
+        
+        if(guess===ran)
+        {
+            result.innerText='Value Matched'
+        }else{
+            result.innerText='Value Not Matched, the random value is '+ran
+        }
+        document.querySelector('.output').append(result);
+    }
+
+
+
 
     
 
