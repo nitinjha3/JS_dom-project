@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h1{
+            text-align: center;
+            color: red;
+        }
+
+       .main{
+          box-sizing: border-box;
+          justify-content: center;
+          text-align: center;
+          height: 80vh;
+          font-size: 25px;
+       }
+       #a{
+          font-size: 30px;
+          display: block;
+          color: red;
+
+       }
+       #val{
+        color: #000;
+        width: 250px;
+        height: 50px;
+        font-size: 30px;
+  /*border-style: none; */
+        margin-top: 25px;
+        border-radius: 25px;
+        border: 5px solid;
+        text-align: center;
+     }
+
+     #submit{
+        display: block;
+        color:black;
+        width: 250px;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 20px;
+        border-style: none;
+         margin-top: 50px;
+         margin-left: 635px;
+         background-color: #600808;
+     }
+     .res{
+        padding-top: 50px;
+        justify-content: center;
+          text-align: center;
+          font-size: 25px;
+
+     }
+     body{
+        background-color:aqua;
+     }
+    </style>
+</head>
+<body>
+    <h1>Guess a Number</h1>
+
+    <div class="main">
+        <p>You can select any nubmer between 1 to 100</p>
+        <p>You have 10 attempts to guess the right number.</p>
+        <br>
+        <form action="" class="form">
+            <label for="val" id="a">Guess a number</label>
+            <input type="text" id="val">
+            <input type="submit" id="submit">
+        </form>
+
+        <div class="res">
+            <p>Previous Guesses: <span class="guess"></span></p>
+            <p>Guesses Remaining: <span class="rem">10</span></p>
+
+            <p class="ans"></p>
+        </div>
+
+
+    </div>
+</body>
+</html>
+
+<script>
+    let num=document.querySelector('#val')
+    let ran=parseInt(Math.random()*100+1);
+    console.log(ran);
+
+    
+
+</script>
