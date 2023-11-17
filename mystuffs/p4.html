@@ -134,29 +134,62 @@
             alert('Number is greater than 100')
         }
         else{
-            // prevGuesses.push(guess)
-            // displayMessage('Game Over.')
+           if(count===11)
+           {
+            prevGuesses.push(guess)
+            displayGuess(guess)
+            Printmessage(`game Over,the random value is ${ran}`)
+            end()
+           }
+           else{  
+            prevGuesses.push(guess)
+            count++
+            displayGuess(guess)  
             check(guess)
+            
+           }
         }
     }
+
+function Printmessage(message)
+  {
+    ans.innerHTML=`<h1>${message}</h1>`
+  }
 
 
     function check(guess){
         // let ran=parseInt(Math.random()*100+1);
-        document.querySelector('.output').innerText=""
-        let result=document.createElement('h1')
+        
+        // let result=document.createElement('h1')
         
         if(guess===ran)
         {
-            result.innerText='Value Matched'
-        }else{
-            result.innerText='Value Not Matched, the random value is '+ran
+            // result.innerText='Value Matched'
+            Printmessage(`Value Matched`)
+
+        }else if(guess< ran){
+            // result.innerText='Value Not Matched, Try Again'
+            Printmessage(`Value is Low, Try Again`)
         }
-        document.querySelector('.output').append(result);
+        else{
+            Printmessage(`Value is High,Try Again`  )
+        }
+
+        // Printmessage(result)
+       
     }
 
+ function displayGuess(guess){
+    input.value=''
+    prev.innerHTML+=`${guess}, `
+    rem.innerHTML=`${11-count}`
 
+ }
 
+ function end(){
+    
+ }
+  
 
     
 
