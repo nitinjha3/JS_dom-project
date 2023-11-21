@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+    <div class="container">
+       <div class="search">
+        <input type="text" placeholder="enter your city" id="input_city" >
+         <button id="btn"><img src="images/search.png" ></button>
+       </div>
+       <div class="weather">
+        <img src="images/rain.png" alt="" class="icon">
+        <h1 class="tempreture">27°c</h1>
+        <h2 class="city">Haldia</h2>
+       </div>
+       <div class="details">
+        <div class="col">
+            <img src="images/humidity.png" alt="">
+            <div>
+                <p class="humidity">50 %</p>
+                <p>Humidity</p>
+            </div>
+        </div>
+        <div class="col">
+            <img src="images/wind.png" alt="">
+            <div>
+                <p class="wind">10 km/h</p>
+                <p>Wind Speed</p>
+            </div>
+        </div>
+       </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const apikey="d9c3663098e8eb461aeac4c772b8b44a"
+    const api_url="https://api.openweathermap.org/data/2.5/weather?units=metric &q=";
+    
+    let input_city=document.querySelector('#input_city')
+    let btn=document.querySelector('#btn')
+    let icon=document.querySelector('.icon')
+
+    async function checkWeather(city)
+    {
+        let connect=await fetch(api_url+ city+`&appid=${apikey}`)
+        let data=await connect.json()
+
+        console.log(data)
+
+        document.querySelector('.city').innerHTML=data.name
+        document.querySelector('.tempreture').innerHTML=Math.round(data.main.temp-273.15)+"°c"
+        document.querySelector('.humidity').innerHTML=data.main.humidity+"%"
+        document.querySelector('.wind').innerHTML=data.wind.speed+" Km/hr"
+       
+
+         if(data.weather[0].main=='Clouds')
+         {
+            icon.src="images/clouds.png"
+         }
+         else if(data.weather[0].main=="Clear")
+         {
+            icon.src="images/clear.png"
+         }
+         else if(data.weather[0].main=="Dizzle")
+         {
+            icon.src="images/dizzle.png"
+         }
+         else if(data.weather[0].main=="Mist")
+         {
+            icon.src="images/mist.png"
+         }
+         else if(data.weather[0].main=="Snow")
+         {
+            icon.src="images/snow.png"
+         }
+         else if(data.weather[0].main=="Rain")
+         {
+            icon.src="images/rain.png"
+         }
+         
+        
+    }
+
+   btn.addEventListener('click',function(){
+      checkWeather(input_city.value)
+   })
+</script>
