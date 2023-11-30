@@ -55,14 +55,14 @@
 }
 ul li{
     list-style: none;
-    font-size: 18px;
+    font-size: 20px;
     padding: 12px 8px 12px 50px;
     user-select:none;
     cursor: pointer;
     position: relative;
-    background-color: green;
+    /* background-color: green; */
 }
- /* span{
+ ul li span{
     position: absolute;
     right:0px;
     top:5px;
@@ -70,9 +70,13 @@ ul li{
     width:40px;
     height: 40px;
     font-size: 22px;
-    color: #dd1313;
-    
-} */
+    color: #dd1313; 
+    line-height: 40px;
+    border-radius: 50%;
+} 
+ul li span:hover{
+    background: rgb(211, 209, 209);
+}
 ul li::before{
     content: '';
     position: absolute;
